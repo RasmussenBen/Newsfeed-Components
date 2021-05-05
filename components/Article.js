@@ -111,7 +111,7 @@ function articleMaker(article) {
   const para2 = document.createElement('p');
   const para3 = document.createElement('p');
   const expand = document.createElement('span');
-
+  
   div.appendChild(title);
   div.appendChild(date);
   div.appendChild(para1);
@@ -119,26 +119,67 @@ function articleMaker(article) {
   div.appendChild(para3);
   div.appendChild(expand);
 
-  title.innerText = article.title;
-  date.innerText = article.date;
-  para1.innerText = article.firstParagraph;
-  para2.innerText = article.secondParagraph;
-  para3.innerText = article.thirdParagraph;
-  expand.innerText = '+';
+  div.classList.add('article');
+  date.classList.add('date');
+  para1.classList.add('firstParagraph');
+  para2.classList.add('secondParagraph');
+  para3.classList.add('thirdParagraph');
+  expand.classList.add('expandButton');
+
+  title.textContent = article.title;
+  date.textContent = article.date;
+  para1.textContent = article.firstParagraph;
+  para2.textContent = article.secondParagraph;
+  para3.textContent = article.thirdParagraph;
+  expand.textContent = '+';
 
   // Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
-
-  
-
   // This listener should toggle the class 'article-open' on div.article.
+
+  expand.addEventListener('click', (e) => {
+    div.classList.toggle('article-open');
+  });
 
   // Step 3: Don't forget to return something from your function!
 
+  return div;
 }
+
+
+let myArticleOne = {
+  title: 'Something really professional',
+  date: 'Alternate timeline',
+  firstParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus magna fringilla urna porttitor rhoncus dolor purus non. Quisque sagittis purus sit amet. Tortor vitae purus faucibus ornare suspendisse. Neque egestas congue quisque egestas diam in arcu.`,
+
+  secondParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus magna fringilla urna porttitor rhoncus dolor purus non. Quisque sagittis purus sit amet. Tortor vitae purus faucibus ornare suspendisse. Neque egestas congue quisque egestas diam in arcu.`,
+
+  thirdParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus magna fringilla urna porttitor rhoncus dolor purus non. Quisque sagittis purus sit amet. Tortor vitae purus faucibus ornare suspendisse. Neque egestas congue quisque egestas diam in arcu.`
+}
+
+let myArticleTwo = {
+  title: 'Very clean appeal',
+  date: 'Probably tomorrow',
+  firstParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus magna fringilla urna porttitor rhoncus dolor purus non. Quisque sagittis purus sit amet. Tortor vitae purus faucibus ornare suspendisse. Neque egestas congue quisque egestas diam in arcu.`,
+
+  secondParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus magna fringilla urna porttitor rhoncus dolor purus non. Quisque sagittis purus sit amet. Tortor vitae purus faucibus ornare suspendisse. Neque egestas congue quisque egestas diam in arcu.`,
+
+  thirdParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus magna fringilla urna porttitor rhoncus dolor purus non. Quisque sagittis purus sit amet. Tortor vitae purus faucibus ornare suspendisse. Neque egestas congue quisque egestas diam in arcu.`
+}
+
+data.push(myArticleOne);
+data.push(myArticleTwo);
 
   // Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   // to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
+const allArticles = document.querySelector('.articles');
+
+data.forEach((objectItem) => {
+  const postArticles = articleMaker(objectItem);
+  allArticles.appendChild(postArticles);
+});
+
   // Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   // Refresh the page to see the new article.
 
+//See above
