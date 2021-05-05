@@ -111,14 +111,30 @@ function articleMaker(article) {
   const para2 = document.createElement('p');
   const para3 = document.createElement('p');
   const expand = document.createElement('span');
-  
 
-}
+  div.appendChild(title);
+  div.appendChild(date);
+  div.appendChild(para1);
+  div.appendChild(para2);
+  div.appendChild(para3);
+  div.appendChild(expand);
+
+  title.innerText = article.title;
+  date.innerText = article.date;
+  para1.innerText = article.firstParagraph;
+  para2.innerText = article.secondParagraph;
+  para3.innerText = article.thirdParagraph;
+  expand.innerText = '+';
 
   // Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
+
+  
+
   // This listener should toggle the class 'article-open' on div.article.
 
   // Step 3: Don't forget to return something from your function!
+
+}
 
   // Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   // to create a div.article element and append it to the DOM inside div.articles (see index.html).
